@@ -1,0 +1,29 @@
+all:
+  hosts:
+    a1mezaira0001.afad.gov.ae:
+      # ansible_host: a1mezaira0001.afad.gov.ae
+      ansible_host: a1mezaira0001
+      ip: 172.16.10.37
+      access_ip: 172.16.10.37
+      ansible_connection: local
+    a1mezaira0002.afad.gov.ae:
+      # ansible_host: a1mezaira0002.afad.gov.ae
+      ansible_host: a1mezaira0002
+      ip: 172.16.10.38
+      access_ip: 172.16.10.38
+  children:
+    kube-master:
+      hosts:
+        a1mezaira0001:
+    kube-node:
+      hosts:
+        a1mezaira0002:
+    etcd:
+      hosts:
+        a1mezaira0001:
+    k8s-cluster:
+      children:
+        kube-master:
+        kube-node:
+    calico-rr:
+      hosts: {}

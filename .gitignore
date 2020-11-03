@@ -17,7 +17,6 @@ contrib/terraform/aws/credentials.tfvars
 vagrant/
 
 # Ansible inventory
-inventory/*
 !inventory/sample
 inventory/*/artifacts/
 
